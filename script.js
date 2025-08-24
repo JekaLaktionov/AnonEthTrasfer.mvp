@@ -71,14 +71,14 @@ let contractWithSigner;
 
 const networks = {
     1: {
-      name: 'Anvil TestNet',
-      shortName: 'anvil',
-      chainId: 0x7a69,
+      name: 'Eth TestNet',
+      shortName: 'TestNet',
+      chainId: 11155111,
       network: 'ethereum',
-      rpc: 'https://127.0.0.1:8545',
+      rpc: 'sepolia.infura.io',
       explorer: ''
     }}
-    const ancilId = '0x7a69';
+    const lId = '0xaa36a7';
 
 
 
@@ -255,6 +255,7 @@ async function withdraw(e) {
 
     }
 }
+
 
 
 
