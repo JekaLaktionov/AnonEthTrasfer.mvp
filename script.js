@@ -124,8 +124,8 @@ async function connectMetaMask() {
                     params: [{chainId:lId}]
                 });
             } catch (chainError){
-            console.error("Не удалось добавить сеть:", chainError);
-            alert("Не удалось добавить сеть. Пожалуйста, сделайте это вручную.");
+            console.error("Failed to add network:", chainError);
+            alert("Failed to add network. Please do it manually.");
             return;
             }
         }
@@ -133,12 +133,12 @@ async function connectMetaMask() {
         signer = await provider.getSigner();
         contractWithSigner = new ethers.Contract(contractAddress, contractABI, signer);
         const address = await signer.getAddress();
-        console.log("MetaMask подключен -", address);
+        console.log("MetaMask is connected -", address);
         if (connectMM) {
             connectMM.textContent = `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
         }
     } catch (error) {
-        console.error("Не удалось подключиться к MetaMask:", error);
+        console.error("Failed to connect to MetaMask:", error);
     }
 }
 
@@ -158,7 +158,7 @@ try {
 connectMetaMask();
 
 if (!inputPass || !inputValue || !buttonReg) {
-    console.error("Hе удалось найти все необходимые HTML-элементы (блок создания аккаунта).");
+    console.error("Could not find all required HTML elements (account creation block).");
 } else {
     buttonReg.addEventListener('click', newDeposit);
 }
@@ -166,6 +166,11 @@ if (!inputPass || !inputValue || !buttonReg) {
 buttonReg.addEventListener('click', newDeposit);
 async function newDeposit(e) {
     e.preventDefault();
+    try {
+          if (!contractWithSigner) {
+    alert("Please connect your wallet first.");
+    return;
+  }
     try {
      const value = inputValue.value;
      const rawpass =  inputPass.value;
@@ -198,7 +203,7 @@ async function hashString(str) {
 
 
 if (!depositPass || !depositValue || !buttonDep) {
-    console.error("Не удалось найти все необходимые HTML-элементы (блок депозита).");
+    console.error("Could not find all required HTML elements (deposit block).");
 } else {
     buttonDep.addEventListener('click', deposit);
 }
@@ -207,6 +212,11 @@ buttonDep.addEventListener('click', deposit);
 
 async function deposit(e) {
     e.preventDefault();
+    try {
+          if (!contractWithSigner) {
+    alert("Please connect your wallet first.");
+    return;
+  }
     try {      
      const value = depositValue.value;
      const rawpass =  inputPass.value;
@@ -227,7 +237,7 @@ async function deposit(e) {
 }
 
 if (!withPass || !withAddress || !buttonWith) {
-    console.error("Не удалось найти все необходимые HTML-элементы (блок вывода).");
+    console.error("Could not find all required HTML elements (output block).");
 } else {
     buttonWith.addEventListener('click', withdraw);
 }
@@ -237,7 +247,7 @@ async function withdraw(e) {
     e.preventDefault();
     try {
           if (!contractWithSigner) {
-    alert("Пожалуйста, сначала подключите кошелёк.");
+    alert("Please connect your wallet first.");
     return;
   }
      const address = withAddress.value;
@@ -255,6 +265,7 @@ async function withdraw(e) {
 
     }
 }
+
 
 
 
