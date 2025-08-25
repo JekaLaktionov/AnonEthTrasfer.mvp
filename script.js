@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 import { ethers } from "https://cdn.jsdelivr.net/npm/ethers@6.8.1/dist/ethers.min.js";
 import { contractABI } from './abi.js';
 
-const contractAddress = "-";
+const contractAddress = "0xbbf6F21d3b2e0F3d6056c2877f2bEfD7901fD137";
 
 let provider;
 let signer;
@@ -255,6 +255,7 @@ async function withdraw(e) {
 
     }
 }
+
 
 
 
