@@ -117,11 +117,11 @@ async function connectMetaMask() {
         await window.ethereum.request({ method: 'eth_requestAccounts' });
         let curentChainId = await window.ethereum.request ({method:'eth_chainId'});
         console.log(curentChainId);
-        if (curentChainId != ancilId){
+        if (curentChainId != lId){
             try{
                 await window.ethereum.request({
                     method: 'wallet_switchEthereumChain',
-                    params: [{chainId:ancilId}]
+                    params: [{chainId:lId}]
                 });
             } catch (chainError){
             console.error("Не удалось добавить сеть:", chainError);
@@ -255,6 +255,7 @@ async function withdraw(e) {
 
     }
 }
+
 
 
 
