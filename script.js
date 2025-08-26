@@ -172,12 +172,13 @@ try {
     alert("Please connect your wallet first.");
     return;
   } 
+     const value = inputValue.value;
+     const rawpass =  inputPass.value;
             if (!value || !rawpass) {
             errorMessageElement.textContent = "Please fill in all fields.";
             return;
         }
-     const value = inputValue.value;
-     const rawpass =  inputPass.value;
+
     const pass = await hashString(rawpass);
      const valueInETH = ethers.parseEther(value);
      console.log(`Setting pass to "${pass}"...`);
@@ -273,6 +274,7 @@ async function withdraw(e) {
 
     }
 }
+
 
 
 
