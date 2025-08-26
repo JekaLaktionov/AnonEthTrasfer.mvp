@@ -167,11 +167,15 @@ if (!inputPass || !inputValue || !buttonReg) {
 buttonReg.addEventListener('click', newDeposit);
 async function newDeposit(e) {
     e.preventDefault();
+try {
           if (!contractWithSigner) {
     alert("Please connect your wallet first.");
     return;
   } 
-    try {
+            if (!value || !rawpass) {
+            errorMessageElement.textContent = "Please fill in all fields.";
+            return;
+        }
      const value = inputValue.value;
      const rawpass =  inputPass.value;
     const pass = await hashString(rawpass);
@@ -190,7 +194,7 @@ errorMessageElement.textContent = '';
 let errorMessage = "An unknown error occurred";
 if (error.reason){
 errorMessage = error.reason;
-errorMessageElement.textContent = "Error -" errorMessage;
+errorMessageElement.textContent = "Error - ${errorMessage}";
 }
     }}
 
@@ -269,5 +273,6 @@ async function withdraw(e) {
 
     }
 }
+
 
 
