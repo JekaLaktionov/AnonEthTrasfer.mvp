@@ -190,7 +190,7 @@ try {
     console.log(trans);
     getTxDataFromHash(tx.hash);
     checkBalance();
-errorMessageElement.textContent = '';
+errorMessageElement.textContent = "";
     } catch  (error) {
 let errorMessage = "An unknown error occurred";
 if (error.reason){
@@ -274,6 +274,7 @@ async function withdraw(e) {
 
     }
 }
+
 
 
 
