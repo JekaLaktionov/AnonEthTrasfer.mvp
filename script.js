@@ -94,6 +94,7 @@ const buttonWith = document.getElementById('WithS');
 const buttonChainMain = document.getElementById('MainChain');
 const connectMM = document.getElementById('connect-but');
 const disConnectMM = document.getElementById('disconnect-but');
+const errorMessageElement = document.getElementById('error-message');
 
 // buttonChainMain.addEventListener('click', handleChainChanged);
 
@@ -166,7 +167,6 @@ if (!inputPass || !inputValue || !buttonReg) {
 buttonReg.addEventListener('click', newDeposit);
 async function newDeposit(e) {
     e.preventDefault();
-    try {
           if (!contractWithSigner) {
     alert("Please connect your wallet first.");
     return;
@@ -185,10 +185,14 @@ async function newDeposit(e) {
     console.log(trans);
     getTxDataFromHash(tx.hash);
     checkBalance();
+errorMessageElement.textContent = '';
     } catch  (error) {
-
-    }
-}catch (error){}}
+let errorMessage = "An unknown error occurred";
+if (error.reason){
+errorMessage = error.reason;
+errorMessageElement.textContent = "Error -" errorMessage;
+}
+    }}
 
 async function hashString(str) {
   const textEncoder = new TextEncoder();
@@ -265,4 +269,5 @@ async function withdraw(e) {
 
     }
 }
+
 
