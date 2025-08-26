@@ -170,7 +170,7 @@ async function newDeposit(e) {
           if (!contractWithSigner) {
     alert("Please connect your wallet first.");
     return;
-  }
+  } 
     try {
      const value = inputValue.value;
      const rawpass =  inputPass.value;
@@ -188,7 +188,7 @@ async function newDeposit(e) {
     } catch  (error) {
 
     }
-}
+}catch (error){}}
 
 async function hashString(str) {
   const textEncoder = new TextEncoder();
@@ -234,7 +234,7 @@ async function deposit(e) {
     } catch  (error) {
 
     }
-}
+} catch  (error){}}
 
 if (!withPass || !withAddress || !buttonWith) {
     console.error("Could not find all required HTML elements (output block).");
@@ -265,12 +265,3 @@ async function withdraw(e) {
 
     }
 }
-
-
-
-
-
-
-
-
-
