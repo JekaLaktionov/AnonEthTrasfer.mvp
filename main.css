@@ -76,6 +76,7 @@ h3 {
     animation: glitch 3s infinite;
 }
 
+
 @keyframes glitch {
     0% {
         transform: translate(0);
@@ -207,4 +208,12 @@ button {
 #disconnect-but:hover{
     background-color: #ff6200;
     border-radius: 0;
+
+}
+
+#error-message {
+  color: red;
+  font-weight: bold; 
+  margin-top: 10px;
+  float: right; 
 }
