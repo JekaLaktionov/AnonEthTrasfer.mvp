@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('resize', updateCanvasSize);
     updateCanvasSize();
     const hashes = [];
-    const hashCount = 10;
+    const hashCount = 12;
     for (let i = 0; i < hashCount; i++) {
         hashes.push({
             x: Math.random() * canvas.width,
@@ -265,3 +265,4 @@ async function withdraw(e) {
 
     }
 }
+
