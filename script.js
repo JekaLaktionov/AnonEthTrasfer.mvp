@@ -194,7 +194,7 @@ errorMessageElement.textContent = '';
 let errorMessage = "An unknown error occurred";
 if (error.reason){
 errorMessage = error.reason;
-errorMessageElement.textContent = "Error - ${errorMessage}";
+errorMessageElement.textContent = `Error - ${errorMessage}`;
 }
     }}
 
@@ -273,6 +273,7 @@ async function withdraw(e) {
 
     }
 }
+
 
 
 
