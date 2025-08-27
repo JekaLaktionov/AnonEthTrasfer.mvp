@@ -213,7 +213,14 @@ button {
 
 #error-message {
   color: red;
-  font-weight: bold; 
-  margin-top: 10px;
-  float: right; 
+  font-weight: bold;
+  font-size: 20px;       
+  text-align: center;      
+  margin: 20px auto;       
+  padding: 15px 25px;      
+  border: 2px solid red;   
+  border-radius: 8px;      
+  background-color: #ffe5e5; 
+  display: inline-block;   
 }
+
