@@ -78,6 +78,9 @@ const networks = {
       rpc: 'sepolia.infura.io',
       explorer: ''
     }}
+   const sepoiId="0xaa36a7";
+   const arbId="";
+
     const lId = '0xaa36a7';
 
 
@@ -95,6 +98,8 @@ const buttonChainMain = document.getElementById('MainChain');
 const connectMM = document.getElementById('connect-but');
 const disConnectMM = document.getElementById('disconnect-but');
 const errorMessageElement = document.getElementById('error-message');
+const sepoiChainSelect= document.getElementById('MainChain');
+const arbChainSelect = document.getElementById('ArbChain');
 
 // buttonChainMain.addEventListener('click', handleChainChanged);
 
@@ -107,6 +112,7 @@ const errorMessageElement = document.getElementById('error-message');
 //     // userChain = networks[chainId]
 //     console.log(curentChain);
 // }
+sepoiChainSelect.addEventListener('click', );
 connectMM.addEventListener('click', connectMetaMask);
 async function connectMetaMask() {
     if (typeof window.ethereum === 'undefined') {
@@ -274,6 +280,7 @@ async function withdraw(e) {
 
     }
 }
+
 
 
 
