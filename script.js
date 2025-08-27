@@ -68,19 +68,8 @@ const contractAddress = "0xbbf6F21d3b2e0F3d6056c2877f2bEfD7901fD137";
 let provider;
 let signer;
 let contractWithSigner;
-
-const networks = {
-    1: {
-      name: 'Eth TestNet',
-      shortName: 'TestNet',
-      chainId1: 11155111,
-      network: 'ethereum',
-      rpc: 'sepolia.infura.io',
-      explorer: ''
-    }}
    const sepoiId="0xaa36a7";
    const arbId="0xa4b1";
-
     const lId = '0xaa36a7';
 
 
@@ -100,7 +89,10 @@ const errorMessageElement = document.getElementById('error-message');
 const sepoiChainSelect= document.getElementById('MainChain');
 const arbChainSelect = document.getElementById('ArbChain');
 
-// buttonChainMain.addEventListener('click', handleChainChanged);
+
+
+
+
 
 async function handleChainChanged (id) {
     const curentChain = await provider.getNetwork();
@@ -116,12 +108,10 @@ params:[{chainId: id}],
       }
 
 }
-sepoiChainSelect.addEventListener('click', handleChainChanged(sepoiId));
-arbChainSelect.addEventListener('click', handleChainChanged(arbId));
-connectMM.addEventListener('click', connectMetaMask);
+
 async function connectMetaMask() {
     if (typeof window.ethereum === 'undefined') {
-        alert("MetaMask не найден. Пожалуйста, установите его.");
+        alert("MetaMask not found. Please install it.");
         return;
     }
     
@@ -154,7 +144,7 @@ async function connectMetaMask() {
     }
 }
 
-disConnectMM.addEventListener('click', disConnectMetaMask);
+
 async function disConnectMetaMask(){
 try {
     const address = await signer.getAddress();
@@ -169,13 +159,6 @@ try {
 
 connectMetaMask();
 
-if (!inputPass || !inputValue || !buttonReg) {
-    console.error("Could not find all required HTML elements (account creation block).");
-} else {
-    buttonReg.addEventListener('click', newDeposit);
-}
-
-buttonReg.addEventListener('click', newDeposit);
 async function newDeposit(e) {
     e.preventDefault();
 try {
@@ -222,14 +205,6 @@ async function hashString(str) {
 }
 
 
-if (!depositPass || !depositValue || !buttonDep) {
-    console.error("Could not find all required HTML elements (deposit block).");
-} else {
-    buttonDep.addEventListener('click', deposit);
-}
-
-buttonDep.addEventListener('click', deposit);
-
 async function deposit(e) {
     e.preventDefault();
     try {
@@ -256,12 +231,6 @@ async function deposit(e) {
     }
 } catch  (error){}}
 
-if (!withPass || !withAddress || !buttonWith) {
-    console.error("Could not find all required HTML elements (output block).");
-} else {
-    buttonWith.addEventListener('click', withdraw);
-}
-
 
 async function withdraw(e) {
     e.preventDefault();
@@ -284,11 +253,16 @@ async function withdraw(e) {
     } catch  (error) {
 
     }
-}}
+}
 
 
+connectMM.addEventListener('click', connectMetaMask);
+disConnectMM.addEventListener('click',disConnectMetaMask);
+buttonReg.addEventListener('click', newDeposit);
+buttonDep.addEventListener('click', deposit);
+buttonWith.addEventListener('click', withdraw);
 
+sepoiChainSelect.addEventListener('click', () => handleChainChanged(sepoiId));
+arbChainSelect.addEventListener('click', () => handleChainChanged(arbId));
 
-
-
-
+}
