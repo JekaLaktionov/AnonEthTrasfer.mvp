@@ -73,13 +73,13 @@ const networks = {
     1: {
       name: 'Eth TestNet',
       shortName: 'TestNet',
-      chainId: 11155111,
+      chainId1: 11155111,
       network: 'ethereum',
       rpc: 'sepolia.infura.io',
       explorer: ''
     }}
    const sepoiId="0xaa36a7";
-   const arbId="";
+   const arbId="0xa4b1";
 
     const lId = '0xaa36a7';
 
@@ -94,7 +94,6 @@ const buttonDep = document.getElementById('DepS');
 const withPass = document.getElementById('WithPass');
 const withAddress = document.getElementById('WithWallet');
 const buttonWith = document.getElementById('WithS');
-const buttonChainMain = document.getElementById('MainChain');
 const connectMM = document.getElementById('connect-but');
 const disConnectMM = document.getElementById('disconnect-but');
 const errorMessageElement = document.getElementById('error-message');
@@ -103,16 +102,22 @@ const arbChainSelect = document.getElementById('ArbChain');
 
 // buttonChainMain.addEventListener('click', handleChainChanged);
 
-// async function handleChainChanged () {
-//     const curentChain = await provider.getNetwork();
-//     // if (!networks[chainId]) {
-//     //   const chain = (await web3.getNetwork())
-//     //   networks[chain.id] = chain
-//     // }
-//     // userChain = networks[chainId]
-//     console.log(curentChain);
-// }
-sepoiChainSelect.addEventListener('click', );
+async function handleChainChanged (id) {
+    const curentChain = await provider.getNetwork();
+    if (curentChain != id) {
+      try { 
+        await window.ethereum.request({
+method:'wallet_switchEthereumChain',
+params:[{chainId: id}],
+        })
+        
+      } catch (error) {
+        
+      }
+
+}
+sepoiChainSelect.addEventListener('click', handleChainChanged(sepoiId));
+arbChainSelect.addEventListener('click', handleChainChanged(arbId));
 connectMM.addEventListener('click', connectMetaMask);
 async function connectMetaMask() {
     if (typeof window.ethereum === 'undefined') {
@@ -279,7 +284,7 @@ async function withdraw(e) {
     } catch  (error) {
 
     }
-}
+}}
 
 
 
