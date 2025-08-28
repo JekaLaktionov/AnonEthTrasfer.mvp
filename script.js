@@ -105,10 +105,9 @@ params:[{chainId: id}],
         
       } catch (error) {
         
-      }
+      }}
 
 }
-
 async function connectMetaMask() {
     if (typeof window.ethereum === 'undefined') {
         alert("MetaMask not found. Please install it.");
@@ -143,7 +142,7 @@ async function connectMetaMask() {
         console.error("Failed to connect to MetaMask:", error);
     }
 }
-
+connectMetaMask();
 
 async function disConnectMetaMask(){
 try {
@@ -157,7 +156,6 @@ try {
 }catch(error) {console.debug('revokePermissions not available:', error)}};
 
 
-connectMetaMask();
 
 async function newDeposit(e) {
     e.preventDefault();
@@ -214,8 +212,7 @@ async function deposit(e) {
           if (!contractWithSigner) {
     alert("Please connect your wallet first.");
     return;
-  }
-    try {      
+  }     
      const value = depositValue.value;
      const rawpass =  inputPass.value;
      const pass = await hashString(rawpass);
@@ -231,9 +228,7 @@ async function deposit(e) {
     checkBalance();
     } catch  (error) {
 
-    }
-} catch  (error){}}
-
+    }}
 
 async function withdraw(e) {
     e.preventDefault();
@@ -255,8 +250,10 @@ async function withdraw(e) {
     checkBalance();
     } catch  (error) {
 
-    }
-}
+    }}
+
+    async function getTxDataFromHash(){};
+    async function checkBalance(){};
 
 
 connectMM.addEventListener('click', connectMetaMask);
@@ -267,6 +264,3 @@ buttonWith.addEventListener('click', withdraw);
 
 sepoiChainSelect.addEventListener('click', () => handleChainChanged(sepoiId));
 arbChainSelect.addEventListener('click', () => handleChainChanged(arbId));
-
-}
-
