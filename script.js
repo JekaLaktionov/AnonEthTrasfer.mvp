@@ -139,7 +139,7 @@ const address = await signer.getAddress();
       connectMM.textContent = `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
     }
     
-    alert(`Ethers.js initialized for network ${currentChain.name} with address: ${address} and contract ${contractAddress}`);
+    console.log(`Ethers.js initialized for network ${currentChain.name} with address: ${address} and contract ${contractAddress}`);
 } catch (error) {
     console.error("Failed to initialize Ethers:", error);
     alert("Failed to connect or initialize. Check the console for details.");    
@@ -170,7 +170,8 @@ async function connectMetaMask() {
         return;
       }
     }
-    const address = await signer.getAddress();
+    await initializeEthers();
+const address = await signer.getAddress();
     console.log("MetaMask is connected -", address);
     if (connectMM) {
       connectMM.textContent = `${address.substring(0, 6)}...${address.substring(
@@ -208,14 +209,12 @@ async function newDeposit(e) {
       alert("Please connect your wallet first.");
       return;
     }
-
-    if (!value || !rawpass) {
+    const value = inputValue.value;
+    const rawpass = inputPass.value;
+        if (!value || !rawpass) {
       errorMessageElement.textContent = "Please fill in all fields.";
       return;
     }
-
-    const value = inputValue.value;
-    const rawpass = inputPass.value;
 
     const pass = await hashString(rawpass);
     const valueInETH = ethers.parseEther(value);
