@@ -257,7 +257,7 @@ async function deposit(e) {
       return;
     }
     const value = depositValue.value;
-    const rawpass = inputPass.value;
+    const rawpass = depositPass.value;
     const pass = await hashString(rawpass);
     const valueInETH = ethers.parseEther(value);
     console.log(`Depostiting from pass "${pass}"...`);
@@ -310,3 +310,4 @@ buttonWith.addEventListener("click", withdraw);
 
 sepoiChainSelect.addEventListener("click", () => handleChainChanged(sepoiId));
 arbChainSelect.addEventListener("click", () => handleChainChanged(arbId));
+
