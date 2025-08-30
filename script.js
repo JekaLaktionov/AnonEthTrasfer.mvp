@@ -71,7 +71,7 @@ const networks = {
   // Arbitrum One Mainnet
   '0xa4b1': {
     name: 'Arbitrum One',
-    smartAddress: '0x'
+    smartAddress: '0x58D858d637707EE233990f7eAec2C372b6B2EDe7'
   }
 };
 
@@ -310,4 +310,5 @@ buttonWith.addEventListener("click", withdraw);
 
 sepoiChainSelect.addEventListener("click", () => handleChainChanged(sepoiId));
 arbChainSelect.addEventListener("click", () => handleChainChanged(arbId));
+
 
